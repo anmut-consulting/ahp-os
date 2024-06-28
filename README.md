@@ -32,9 +32,9 @@ Php package (c) Klaus D Goepel, 2013-2024
 * Group consensus cluster analysis (still experimental)
 
 ### Languages
-Currently language files for English, German, Spanish, Portugese and Turkish 
-are included. They can be found in the sub-directory `language/xx` with
-xx = en, de, es, pt, tr.
+Currently language files for English, German, Spanish, Portugese Turkish 
+and Russian are included. They can be found in the sub-directory
+`language/xx` with xx = en, de, es, pt, tr, ru.
 
 ## Installation
 
@@ -176,7 +176,7 @@ ahp-\
      |
      |--language -- de/en -- AhpCalcXX, AhpDbXX, AhpXX, AhpGroupXX
      |              es/pt    AhpGroupResXX, AhpHierarchyXX,
-     |              tr       AhpHierXX, AhpHierginiXX, AhpNewsXX,
+     |              tr/ru    AhpHierXX, AhpHierginiXX, AhpNewsXX,
      |--views (html menus)   AhpPrioCalcXX, AhpSessionAdminXX
      |--vendor (will contain phpMailer)
 ```
@@ -229,9 +229,10 @@ The work is published under GNU GENERAL PUBLIC LICENSE Version 3.
 
 ## Work in progress!
 
-2022-01-28 - First version added to svn
+2022-01-28 - First version added to svn  
 2022-02-17 - Import/Export function for projects added
-             ToDo: translation, move menu to views
-2022-03-01 - Group consensus cluster analysis added (experimental)
-2023-12-30 - Turkish translation, text field lenth for criteria set to 99
+             ToDo: translation, move menu to views  
+2022-03-01 - Group consensus cluster analysis added (experimental)  
+2023-12-30 - Turkish translation, text field lenth for criteria set to 99  
+2024-06-28 - Russian translation added
 
