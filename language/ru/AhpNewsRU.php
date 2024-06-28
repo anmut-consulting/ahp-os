@@ -1,6 +1,6 @@
 <?php
 
-class AhpNewsEN
+class AhpNewsRU
 {
     public $titles1    = array(
     'pageTitle'  =>    "AHP-OS News",
