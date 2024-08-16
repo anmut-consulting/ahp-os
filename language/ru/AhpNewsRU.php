@@ -3,37 +3,37 @@
 class AhpNewsRU
 {
     public $titles1    = array(
-    'pageTitle'  =>    "AHP-OS News",
-    'h1title'    =>    "<h1>AHP Online System - BPMSG</h1>",
-    'h2welc'     =>    "<h2>Welcome %s!</h2>",
-    'h3release'  =>    "<h3>AHP-OS Release %s (%s)</h3>",
-    'h3news2'    =>    "<h3>AHP-OS in other languages</h3>",
-    'h3don'      =>    "<h3>Your Donation</h3>"
+    'pageTitle'  =>    "Новости AHP-OS",
+    'h1title'    =>    "<h1>AHP Онлайн Система - BPMSG</h1>",
+    'h2welc'     =>    "<h2>Добро пожаловать, %s!</h2>",
+    'h3release'  =>    "<h3>Версия AHP-OS %s (%s)</h3>",
+    'h3news2'    =>    "<h3>AHP-OS на других языках</h3>",
+    'h3don'      =>    "<h3>Ваше пожертвование</h3>"
 );
 
     public $msg = array(
-    'tu'        =>    "Thank You!",
-    'cont'      =>    "Continue"
+    'tu'        =>    "Спасибо!",
+    'cont'      =>    "Продолжить"
 );
 
     public $info = array(
-    'news0'     =>  "<p>In this latest release the <span class='hl'>Russian language</span> translation was added, 
-                    thanks to Dmtry. </p>",
+    'news0'     =>  "<p>В последнем релизе была добавлена <span class='hl'>русская локализация</span>,
+                    благодаря Дмитрию Маеву. </p>",
     'news1'     =>  "<p>
-                    For more Info about <span class='hl'>Group Consensus Cluster Analysis </span> please see 
-                    <a href='https://bpmsg.com/group-consensus-cluster-analysis/' target='_blank'>here</a>.</p>",
+                    Для получения дополнительной информации о <span class='hl'>Групповом Консенсусном Кластерном Анализе</span> перейдите по
+                    <a href='https://bpmsg.com/group-consensus-cluster-analysis/' target='_blank'>ссылке</a>.
+                    </p>",
     'news2'     =>  "<p>
-                    We are still looking to find volunteers for a translation of all AHP-OS output into other 
-                    languages. At the moment English, German, Spanish and Portugese, Turkish and Russian are supported. 
-                    If you are willing to support the program,
-                    please contact me via the contact link at the bottom of this page.
+                    Мы продолжаем искать волонтеров для перевода AHP-OS на другие языки. 
+                    В настоящее время поддерживаются английский, немецкий, испанский и португальский, турецкий и русский языки.
+                    Если вы готовы помочь, пожалуйста, свяжитесь со мной через ссылку обратной связи в нижней части этой страницы.
                     </p>",
     'don'       =>  "<p>
-                    Before you start: If you are an active user or like the program, <span class='hl'>please help with a donation</span> to keep 
-                    this website alive. 
-                    I have running costs for web hosting, certificate, spam protection and maintenance, and want to keep  
-                    AHP-OS free for all users. As a donor your account will be kept active without the request for 
-                    reactivation, even if you don't access it for a period longer than 3 months.
-                    </p>"
+                    Прежде чем начать: если вы активный пользователь или вам нравится это  решение, <span class='hl'>пожалуйста, помогите пожертвованием</span> для поддержки
+                    этого сайта.
+                    У меня есть расходы на веб-хостинг, сертификат, защиту от спама и обслуживание, и я хочу сохранить
+                    AHP-OS бесплатным для всех пользователей. Как спонсор, ваша учетная запись будет сохранена активной без запроса на
+                    повторную активацию, даже если вы не будете обращаться к ней в течение периода длительнее 3 месяцев.
+                    </p>",
 );
 }

@@ -28,8 +28,8 @@ include 'includes/config.php';
 
 session_start();
 
-$version = substr('$LastChangedDate: 2022-03-01 11:44:47 +0800 (Di, 01 Mär 2022) $', 18, 10);
-$rev = trim('$Rev: 178 $', "$");
+$version = substr('$LastChangedDate: 2024-08-16 12:26:02 +0800 (Fr, 16 Aug 2024) $', 18, 10);
+$rev = trim('$Rev: 222 $', "$");
 
 $class = 'Ahp' . $lang;
 $ahpOs = new $class();
@@ -89,7 +89,7 @@ if (DONATIONS) {
 
 echo $ahpOs->info['intro16'];
 
-if (!$loggedIn && ($lang == 'EN' || $lang == 'ES' || $lang == 'PT')) {
+if (!$loggedIn && ($lang == 'EN' || $lang == 'ES' || $lang == 'PT' || $lang == 'RU')) {
     echo $ahpOs->info['intro21'];
     echo $ahpOs->info['intro22'];
     echo $ahpOs->info['intro23'];

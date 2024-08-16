@@ -20,9 +20,9 @@ class AhpRU
     'intro11'    =>    "<div class='entry-content'><p style='text-align:justify;'>
                         Этот бесплатный <b>веб-инструмент использует Метод анализа иерархий</b> и предназначен для помощи в принятии решений.
                         Он может быть полезен как для решения простых задач в повседневной работе, так и для принятия сложных решений.
-                        Присоединяйтесь к групповой сессии и попробуйте  
-                        <a href='https://bpmsg.com/participate-in-an-ahp-group-session-ahp-practical-example/'>на практике</a>. 
-                        Вы можете скачать <a href='docs/BPMSG-AHP-OS-QuickReference.pdf' target='_blank'>краткое справочное руководство</a> 
+                        Ознакомьтесь с <a href='https://bpmsg.com/participate-in-an-ahp-group-session-ahp-practical-example/'>примерами использования </a> 
+                        (на английском языке). 
+                        Скачайте <a href='docs/BPMSG-AHP-OS-QuickReference.pdf' target='_blank'>краткое справочное руководство</a> 
                         или <a href='docs/BPMSG-AHP-OS.pdf' target='_blank'>Руководство по AHP-OS</a>. 
                         Чтобы воспользоваться всеми функциями, вам необходимо авторизоваться. 
                         Если у вас еще нет учетной записи, пожалуйста, <a href='includes/login/do/do-register.php'>зарегистрируйтесь</a>. 
@@ -35,7 +35,7 @@ class AhpRU
                         <a href='ahp-session-admin.php'>Мои AHP проекты</a></span></li>
                         <li><span style='cursor:help;' 
                         title='Калькулятор приоритетов AHP вычисляет приоритеты или веса для набора критериев на основе попарных сравнений.' >
-                        <a href='ahp-calc.php'>AHP Priority Calculator</a></span></li>
+                        <a href='ahp-calc.php'>Калькулятор приоритетов AHP</a></span></li>
                         <li><span style='cursor:help;' 
                         title='Принятие решений с использованием AHP. Определите иерархию критериев и оцените альтернативы.' >
                         <a href='ahp-hierarchy.php'>Иерархии AHP</a></span></li>
@@ -49,19 +49,19 @@ class AhpRU
                         </ol>",
 
     'intro13'    =>    "<p style='text-align:justify;'>
-                        Для программ 2 и 3 вы можете экспортировать результаты в виде файлов csv (значения, разделенные запятыми) для дальнейшей
+                        При использовании разделов 'Калькулятор приоритетов AHP' и 'Иерархии AHP' вы можете экспортировать результаты в формате CSV (значения, разделенные запятыми) для дальнейшей
                         обработки в Excel.</p>",
 
     'intro14'    =>    "<p style='text-align:justify;'>
                         <b>Перед использованием, пожалуйста, ознакомьтесь</b> 
                         <a href='https://bpmsg.com/about/user-agreement-and-privacy-policy/' >
-                        с пользовательским соглашением и политикой конфиденциальности.</a></p>",
+                        с пользовательским соглашением и политикой конфиденциальности.</a> (на английском языке)</p>",
 
     'intro15'    =>    "<p style='text-align:justify;'>
-                        Если Вам понравилась программа, <span class='err'>пожалуйста, подумайте о помощи и рассмотрите возможность 
+                        Если Вам понравилась наше веб-решение, <span class='err'>пожалуйста, подумайте о помощи и рассмотрите возможность 
                         <a href='ahp-news.php'>пожертвования</a> для поддержки сайта</span>.</p>",
 
-    'intro16'    =>    "<p><b>При публикации ваших научных работ используйте ссылку на публикацию:</b><br>
+    'intro16'    =>    "<p><b>При публикации ваших научных работ используйте ссылку:</b><br>
                         <code>Goepel, K.D. (2018). Implementation of an Online Software Tool for the Analytic Hierarchy 
                         Process (AHP-OS). <i>International Journal of the Analytic Hierarchy Process</i>, Vol. 10 Issue 3 2018, pp 469-487,
                         <br><a href='https://doi.org/10.13033/ijahp.v10i3.590'>https://doi.org/10.13033/ijahp.v10i3.590</a>

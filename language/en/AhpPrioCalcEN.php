@@ -84,7 +84,7 @@ class AhpPrioCalcEN
     "doPwc"		=>	"Please do the pairwise comparison of all criteria. When completed, 
 								click <i>Check Consistency</i> to get the priorities.<br>",
     "doPwcA"	=>	"Please do the pairwise comparison of all alternatives to indicate, how good 
-								they fulfill each criterion. Once finished, click <i>Check Consistency
+								they fulfill each criterion. Once finished, click <i>Calculate
 								</i> to get the weights, and <i>Submit Priorities</i> to proceed. ",
     "doPwcA1"	=>	"<p>Compare alternatives with respect to criteria (click on AHP). 
 								How good is the fit of alternatives with each criterion?</p>",
