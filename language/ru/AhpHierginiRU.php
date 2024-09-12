@@ -20,7 +20,7 @@ class AhpHierginiRU
     "subTitle3"	=>	"Входные данные для попарного сравнения ",
     "h3Pwc"			=>	"<h3>Попарное сравнение <span class='var'>%s</span></h3>",
     "h3Res"			=>	"<h3 align='center'>Результирующие приоритеты</h3>",
-    "h2siMnu"		=>	"<h2>Меню ввода данные сеанса AHP</h2>"
+    "h2siMnu"		=>	"<h2>Меню ввода данных сеанса AHP</h2>"
 );
 
     // Messages

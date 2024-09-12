@@ -18,7 +18,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- *  Revision: $Rev: 219 $
+ *  Revision: $Rev: 225 $
  *
  */
 
@@ -29,7 +29,8 @@ include 'includes/config.php';
  * TODO: error handling: check db connection to backup
  * database successful!
  */
-$backupDb = 'bpmsg_bck-2023-12-27';
+$backupDb = 'bpmsg_bck-2024-03-20';
+//$backupDb = 'bpmsg_bck-2023-12-27';
 //$backupDb = 'ahp_os.2022-01-30.db';
 
 $storedUsers = array();  // users in active database
@@ -41,8 +42,8 @@ $ahpUser = array();
 $pageTitle ='AHP recover';
 $title="AHP-OS User Recovery";
 $subTitle = "User recovery from bachup database";
-$version = substr('$LastChangedDate: 2024-06-28 12:41:05 +0800 (Fr, 28 Jun 2024) $', 18, 10);
-$rev = trim('$Rev: 219 $', "$");
+$version = substr('$LastChangedDate: 2024-09-12 16:02:00 +0800 (Do, 12 Sep 2024) $', 18, 10);
+$rev = trim('$Rev: 225 $', "$");
 
 // productive database
 $login =  new Login();

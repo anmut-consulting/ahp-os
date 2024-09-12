@@ -27,7 +27,7 @@ class AhpSessionAdminRU
     'hInfo2'        => "<span class='msg'>. Проект может быть использован для определения альтернатив. <br>Нажмите на <i>Использовать Иерархию</i></span>",
     'hInfo3'        => "<span class='msg'> и у проекта <span class='var'>%g</span> определены альтернативы.</span>",
     'usrStat1'      => "<p class='msg'><small>В AHP-OS <span class='res'>%s</span> зарегистрированных пользователей, ",
-    'usrStat2'      => "<span class='res'>%g</span> активных пользователей за последние %g часа(ов).</small></p>",
+    'usrStat2'      => "<span class='res'>%g</span> активных пользователей за последние %g часа.</small></p>",
     'usrStat3'      => "<p class='msg'>%s, у вас есть <span class='res'>%g</span> проекта(ов). ",
     'usrStat4'      => "Индекс использования вашей программы равен <span class=res>%g%%</span>. ",
     'usrDon1'       => "Пожалуйста, рассмотрите возможность <a href='ahp-news.php'>пожертвования</a>",
