@@ -67,6 +67,29 @@
     define('EMAIL_SMTP_PORT', 465);
     define('EMAIL_SMTP_ENCRYPTION', "ssl");
 
+// /*
+//  ***********************************************************************
+//  *  Database settings: "sqlite" or "mysql"
+//  *  NOTE: When using sqlite, ensure directory and file is 
+//  *  writeable!
+//  ***********************************************************************
+//  */
+//     define('DB_TYPE', 'sqlite');
+//     define('DBNAME', getenv('TURSO_DATABASE_NAME'));
+//     // define('DBNAME', getenv('TURSO_DATABASE_NAME'));
+//     define('TURSO_DATABASE_URL', getenv('TURSO_DATABASE_URL'));
+//     define('TURSO_AUTH_TOKEN', getenv('TURSO_AUTH_TOKEN'));
+
+//     define('DBUSER', "ahp-os"); // --- for mysql
+//     define('DBPASS', "ahp-os-mariaDB-password");
+
+//     // if (DB_TYPE == "mysql") {
+//     //     /* provide access to your mariadb database */
+//     //     define('DBHOST', "localhost:3306");
+//     //     $dbName = DBNAME;
+//     // } else {
+//     //     $dbName = DBNAME . '.db';
+//     // }
 /*
  ***********************************************************************
  *  Database settings: "sqlite" or "mysql"
@@ -74,21 +97,19 @@
  *  writeable!
  ***********************************************************************
  */
-    define('DB_TYPE', 'sqlite');
-    define('DBNAME', getenv('TURSO_DATABASE_NAME'));
-    define('TURSO_DATABASE_URL', getenv('TURSO_DATABASE_URL'));
-    define('TURSO_AUTH_TOKEN', getenv('TURSO_AUTH_TOKEN'));
+    define('DB_TYPE', "sqlite");
+    define('DBNAME', "ahp_os");
 
     define('DBUSER', "ahp-os"); // --- for mysql
     define('DBPASS', "ahp-os-mariaDB-password");
 
-    // if (DB_TYPE == "mysql") {
-    //     /* provide access to your mariadb database */
-    //     define('DBHOST', "localhost:3306");
-    //     $dbName = DBNAME;
-    // } else {
-    //     $dbName = DBNAME . '.db';
-    // }
+    if (DB_TYPE == "mysql") {
+        /* provide access to your mariadb database */
+        define('DBHOST', "localhost:3306");
+        $dbName = DBNAME;
+    } else {
+        $dbName = DBNAME . '.db';
+    }
 
 
 /*
@@ -276,6 +297,7 @@
             $paths = array(
                 ABS_PATH . BASE . 'classes/',
                 ABS_PATH . BASE . 'includes/login/',
+                ABS_PATH . BASE . 'includes/',
                 ABS_PATH . BASE . 'language/' . $lang . '/'
             );
             foreach ($paths as $path) {

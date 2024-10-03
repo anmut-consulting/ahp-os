@@ -33,7 +33,7 @@ class WebHtml
     {
         global $lang;
         global $cssUrl;
-        include ABS_PATH . BASE . "includes" . DIRECTORY_SEPARATOR . "header.html";
+        include "includes/header.html";
         echo "\n<!-- Content -->\n";
         echo "<div class='hentry' id='content' style='background-color:white;margin-left:auto;
             margin-right:auto;max-width:{$width}px;padding:15px;'>";
@@ -72,7 +72,7 @@ class WebHtml
                 $phpUtil->displayArray($_POST);
             }
         }
-        include ABS_PATH  . BASE . "includes" . DIRECTORY_SEPARATOR . "footer.html";
+        include "includes/footer.html";
     }
 
 

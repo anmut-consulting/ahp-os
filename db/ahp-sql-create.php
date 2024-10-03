@@ -27,7 +27,9 @@ define('DROP_DONATION_FIRST', false);
 define('CREATE_TRIGGERS', true);
 define('DROP_TRIGGER_FIRST', false);
 
-include '../includes/config.php';
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../classes/WebHtml.php';
+
 
 $dbConnection = null;
 $err = array();
@@ -317,17 +319,21 @@ echo "<h2>AHP-OS database, table and trigger creation</h2>";
 echo "<p>Database type: <span class='msg'>", DB_TYPE, "</span></p>";
 
 /* --- Create empty file for SQLite DB --- */
-if( DB_TYPE == "sqlite"){
-        if (file_exists(DB_PATH . DBNAME . ".db" ))
-                echo "<p class='err'>Warning: SQLITE database $dbName already exists!<br>"
-                . DB_PATH . DBNAME . ".db</p>";
-        else {
-                touch(DB_PATH . DBNAME . ".db");
-                echo "<p class='msg'>SQLITE database file created. <br>"
-                . DB_PATH . DBNAME . ".db</p>";
-        }        
+if (DB_TYPE == "sqlite") {
+    $dbFile = DB_PATH . DBNAME . ".db";
+    if (file_exists($dbFile)) {
+        echo "<p class='err'>Warning: SQLITE database $dbName already exists!<br>" . $dbFile . "</p>";
+    } else {
+        if (!is_dir(dirname($dbFile))) {
+            mkdir(dirname($dbFile), 0755, true);
+        }
+        if (touch($dbFile)) {
+            echo "<p class='msg'>SQLITE database file created. <br>" . $dbFile . "</p>";
+        } else {
+            echo "<p class='err'>Failed to create SQLITE database file. <br>" . $dbFile . "</p>";
+        }
+    }
 }
-
 /* --- Exit when no DB connection can be established --- */
 if($flag = databaseConnection()){
 	echo "<p span='msg'>Database connection established</p>";
