@@ -29,6 +29,9 @@
  *  name and password.
  */
 
+ require_once __DIR__ . '/../classes/PhpUtil.php';
+
+
 
 /*  
  ***********************************************************************
@@ -71,19 +74,21 @@
  *  writeable!
  ***********************************************************************
  */
-    define('DB_TYPE', "sqlite");
-    define('DBNAME', "ahp_os");
+    define('DB_TYPE', 'sqlite');
+    define('DBNAME', getenv('TURSO_DATABASE_NAME'));
+    define('TURSO_DATABASE_URL', getenv('TURSO_DATABASE_URL'));
+    define('TURSO_AUTH_TOKEN', getenv('TURSO_AUTH_TOKEN'));
 
     define('DBUSER', "ahp-os"); // --- for mysql
     define('DBPASS', "ahp-os-mariaDB-password");
 
-    if (DB_TYPE == "mysql") {
-        /* provide access to your mariadb database */
-        define('DBHOST', "localhost:3306");
-        $dbName = DBNAME;
-    } else {
-        $dbName = DBNAME . '.db';
-    }
+    // if (DB_TYPE == "mysql") {
+    //     /* provide access to your mariadb database */
+    //     define('DBHOST', "localhost:3306");
+    //     $dbName = DBNAME;
+    // } else {
+    //     $dbName = DBNAME . '.db';
+    // }
 
 
 /*
@@ -139,6 +144,12 @@
             1+strpos($_SERVER['SCRIPT_NAME'], '/', 1)
         )
     );
+
+    // Debugging code
+    echo "ABS_PATH: " . ABS_PATH . "<br>";
+    echo "BASE: " . BASE . "<br>";
+    echo "Current script: " . $_SERVER['SCRIPT_FILENAME'] . "<br>";
+    echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
 
     // --- error log for php in BASE directory
     ini_set('error_log', ABS_PATH . BASE . 'error_log');
@@ -258,23 +269,25 @@
     $urlProjectImport = 'ahp-project-import.php'; // Import project from json file
 
     // --- CLASS LOADER
-    spl_autoload_register('appClassLoader');
-    function appClassLoader($className)
-    {
-        $lang = strtolower(substr($className, -2, 2));
-        $paths = array(
-            ABS_PATH . BASE . 'classes/',
-            ABS_PATH . BASE . 'includes/login/',
-            ABS_PATH . BASE . 'language/' . $lang . '/'
-        );
-        foreach ($paths as $path) {
-            $file = $path . $className . '.php';
-            if (is_readable($file)) {
-                require $file;
+    if (!function_exists('appClassLoader')) {
+        function appClassLoader($className)
+        {
+            $lang = strtolower(substr($className, -2, 2));
+            $paths = array(
+                ABS_PATH . BASE . 'classes/',
+                ABS_PATH . BASE . 'includes/login/',
+                ABS_PATH . BASE . 'language/' . $lang . '/'
+            );
+            foreach ($paths as $path) {
+                $file = $path . $className . '.php';
+                if (is_readable($file)) {
+                    require $file;
+                }
             }
         }
     }
-    
+    spl_autoload_register('appClassLoader');
+
     // --- Switch to maintenance webpage when updating
     if (UPDATE && $_SERVER['REMOTE_ADDR'] != MY_IP) {
         require 'maintenance.php';
@@ -293,6 +306,137 @@
         } else {
             $lang ='EN';
         }
+
+
+
+    // class PhpUtil
+    // {
+    //     public function __construct()
+    //     {
+    //         mb_internal_encoding('UTF-8');      
+    //     }
+
+
+    //     /* Get clients IP address */
+    //     public function get_client_ip()
+    //     {
+    //         $ipaddress = '';
+    //         if ($_SERVER['HTTP_CLIENT_IP']) {
+    //             $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    //         } elseif ($_SERVER['HTTP_X_FORWARDED_FOR']) {
+    //             $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    //         } elseif ($_SERVER['HTTP_X_FORWARDED']) {
+    //             $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    //         } elseif ($_SERVER['HTTP_FORWARDED_FOR']) {
+    //             $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    //         } elseif ($_SERVER['HTTP_FORWARDED']) {
+    //             $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    //         } elseif ($_SERVER['REMOTE_ADDR']) {
+    //             $ipaddress = $_SERVER['REMOTE_ADDR'];
+    //         } else {
+    //             $ipaddress = '';
+    //         }
+    //         return $ipaddress;
+    //     }
+
+
+    //     /* Spam query function project honeypot
+    //     * Please see https://www.projecthoneypot.org */
+    //     public function my_httpbl_check($ip)
+    //     {
+    //         if(defined('HPAPIKEY')){
+    //             $request = HPAPIKEY . "."
+    //             . implode(".", array_reverse(explode(".", $ip)))
+    //             . ".dnsbl.httpbl.org";
+    //             $result = explode(".", gethostbyname($request));
+    //             return($result[0] == 127 ? $result : "ok");
+    //         }
+    //         return "";
+    //     }
+
+    //     /* Compares current session id (sid) with $_SESSION['sid']
+    //     * If $_SESSION['sid'] is not set, starts a new session
+    //     * @return string $sid session id
+    //     */
+    //     public function startNewSession()
+    //     {
+    //         $sid = session_id();
+    //         if (isset($_SERVER['HTTP_USER_AGENT'])) {
+    //             $sid = md5($sid . $_SERVER['HTTP_USER_AGENT']);
+    //         } else {
+    //             $sid = md5($sid . "any rubbish text whatever");
+    //         }
+    //         if (isset($_SESSION['sid'])) {
+    //             if ($sid != $_SESSION['sid']) {
+    //                 unset($_SESSION['sid']);
+    //                 die("Invalid session");
+    //             }
+    //         } else {
+    //             $_SESSION['sid'] = $sid;
+    //             $_SESSION['tstart'] = gettimeofday(true);
+    //         }
+    //         return $sid;
+    //     }
+
+
+    // /* Close session */
+    //     public function closeSession()
+    //     {
+    //         session_unset();
+    //         session_destroy();
+    //         session_write_close();
+    //         setcookie(session_name(), '', 0, '/');
+    //     }
+
+
+    //     /* Makes arrays easily readable for debugging purposes */
+    //     public function displayArray($array)
+    //     {
+    //         if (is_array($array)) {
+    //             echo "<p>";
+    //             foreach ($array as $key => $val) {
+    //                 echo "<span style='color:blue'>$key: </span>";
+    //                 if (is_array($val)) {
+    //                     print_r($val);
+    //                 } else {
+    //                     echo "$val";
+    //                 }
+    //                 echo "<br>";
+    //             }
+    //             echo "</p>";
+    //         } else {
+    //             echo "<p>$array</p>";
+    //         }
+    //     }
+
+
+    //     /* Display file size */
+    //     function display_filesize($filesize)
+    //     {
+    //         if (is_numeric($filesize)) {
+    //             $decr = 1024;
+    //             $step = 0;
+    //             $prefix = array('Byte','KB','MB','GB','TB','PB');
+
+    //             while (($filesize / $decr) > 0.9) {
+    //                 $filesize = $filesize / $decr;
+    //                 $step++;
+    //             }
+    //             return round($filesize, 1).' '.$prefix[$step];
+    //         } else {
+    //             return 'NaN';
+    //         }
+    //     }
+
+
+    //     /* Validate Date format Y-m-d */
+    //     function validateDate($date, $format = 'Y-m-d')
+    //     {
+    //         $d = DateTime::createFromFormat($format, $date);
+    //         return $d && $d->format($format) == $date;
+    //     }
+
+    // }
 
 
     // --- General FUNCTIONS    

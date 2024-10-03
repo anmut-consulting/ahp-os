@@ -15,8 +15,8 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-include('../../config.php');
-require('../../../vendor/autoload.php');
+include __DIR__ . '/../../config.php';
+include('../../../vendor/autoload.php');
 
 $title="User Registration";
 $version = substr('$LastChangedDate: 2022-02-28 13:59:16 +0800 (Mo, 28 Feb 2022) $', 18, 10);
