@@ -102,6 +102,21 @@
 
     define('DBUSER', "ahp-os"); // --- for mysql
     define('DBPASS', "ahp-os-mariaDB-password");
+    define('ABS_PATH', $_SERVER['DOCUMENT_ROOT']);
+    define(
+        'BASE',
+        substr(
+            $_SERVER['SCRIPT_NAME'],
+            0,
+            1+strpos($_SERVER['SCRIPT_NAME'], '/', 1)
+        )
+    );
+
+    // define('DB_PATH', ABS_PATH . "/db/");
+    define('DB_PATH', __DIR__ . "/../db/");
+    
+
+
 
     if (DB_TYPE == "mysql") {
         /* provide access to your mariadb database */
@@ -109,8 +124,15 @@
         $dbName = DBNAME;
     } else {
         $dbName = DBNAME . '.db';
+        $dbPath = DB_PATH;
+        $dbFile = DB_PATH . $dbName;
+        if (!file_exists($dbFile)) {
+            die("Database file does not exist: $dbFile");
+        }
+        if (!is_readable($dbFile) || !is_writable($dbFile)) {
+            die("Database file is not readable or writable: $dbFile");
+        }
     }
-
 
 /*
  ***********************************************************************
@@ -156,15 +178,15 @@
 // ---------------------------------------------------------------------
 
     // --- DIRECTORIES (PATH)
-    define('ABS_PATH', $_SERVER['DOCUMENT_ROOT']);
-    define(
-        'BASE',
-        substr(
-            $_SERVER['SCRIPT_NAME'],
-            0,
-            1+strpos($_SERVER['SCRIPT_NAME'], '/', 1)
-        )
-    );
+    // define('ABS_PATH', $_SERVER['DOCUMENT_ROOT']);
+    // define(
+    //     'BASE',
+    //     substr(
+    //         $_SERVER['SCRIPT_NAME'],
+    //         0,
+    //         1+strpos($_SERVER['SCRIPT_NAME'], '/', 1)
+    //     )
+    // );
 
     // Debugging code
     echo "ABS_PATH: " . ABS_PATH . "<br>";
@@ -186,7 +208,7 @@
     // --- Protocol http or https
     define('PROT', ($_SERVER['HTTPS'] ? "https://" : "http://"));
 
-    define('DB_PATH', ABS_PATH . BASE . "db/");
+    // define('DB_PATH', ABS_PATH . BASE . "db/");
 
     // --- COOKIES
     define('COOKIE_RUNTIME', 1209600); // 1209600 seconds = 2 weeks

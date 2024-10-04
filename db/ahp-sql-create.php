@@ -267,33 +267,39 @@ $sqliteDonationsTable = "CREATE TABLE IF NOT EXISTS `donations` (
 );";
 
 /* Database Connection */
-  function databaseConnection(){
-  	global $dbConnection;
-  	if ($dbConnection != null) { // if connection already exists
-    	return true;
-  	} else {
-      // create a database connection, using the constants from config/config.php
-    	try {
-				if (DB_TYPE == 'sqlite'){
-	      	                        $dbConnection = new PDO( DB_TYPE . ':' . DB_PATH . DBNAME . ".db");
-					return true;
- 				} elseif (DB_TYPE == 'mysql'){
-					$dsn = 'mysql:host=' . DBHOST . ';dbname=' . DBNAME . ';charset=utf8';
-                                        $dbConnection = new PDO($dsn, DBUSER, DBPASS);
-					return true;
-	 			} else {
- 					$err[] = "SQL Database type not included";
- 					return false;
- 				}
-   		// If an error is catched, database connection failed
-    	} catch (PDOException $e) {
-      	$err[] = "Database connection error " . $e->getMessage();
-    	}
-  	}	
-    // default return
-  return false;
-  }
-
+function databaseConnection(){
+    global $dbConnection;
+    if ($dbConnection != null) {
+        return true;
+    } else {
+        try {
+            if (DB_TYPE == 'sqlite'){
+                $dbFile = DB_PATH . DBNAME . ".db";
+                echo "Attempting to connect to SQLite database: $dbFile<br>";
+                if (!file_exists($dbFile)) {
+                    throw new Exception("Database file does not exist: $dbFile");
+                }
+                if (!is_readable($dbFile) || !is_writable($dbFile)) {
+                    throw new Exception("Database file is not readable or writable: $dbFile");
+                }
+                $dbConnection = new PDO(DB_TYPE . ':' . $dbFile);
+                $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                return true;
+            } elseif (DB_TYPE == 'mysql'){
+                $dsn = 'mysql:host=' . DBHOST . ';dbname=' . DBNAME . ';charset=utf8';
+                echo "Attempting to connect to MySQL database: $dsn<br>";
+                $dbConnection = new PDO($dsn, DBUSER, DBPASS);
+                $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                return true;
+            } else {
+                throw new Exception("SQL Database type not included");
+            }
+        } catch (Exception $e) {
+            echo "Database connection error: " . $e->getMessage() . "<br>";
+            return false;
+        }
+    }
+}
 
 #$login = new Login();
 // reset in case back from edit form
