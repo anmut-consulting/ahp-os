@@ -188,11 +188,11 @@
     //     )
     // );
 
-    // Debugging code
-    echo "ABS_PATH: " . ABS_PATH . "<br>";
-    echo "BASE: " . BASE . "<br>";
-    echo "Current script: " . $_SERVER['SCRIPT_FILENAME'] . "<br>";
-    echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+    // // Debugging code
+    // echo "ABS_PATH: " . ABS_PATH . "<br>";
+    // echo "BASE: " . BASE . "<br>";
+    // echo "Current script: " . $_SERVER['SCRIPT_FILENAME'] . "<br>";
+    // echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
 
     // --- error log for php in BASE directory
     ini_set('error_log', ABS_PATH . BASE . 'error_log');

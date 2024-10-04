@@ -1,5 +1,4 @@
-FROM php:8.0-apache
-
+FROM php:7.4-apache
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
@@ -24,15 +23,17 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
-RUN mkdir -p /var/www/html/db && chown -R www-data:www-data /var/www/html/db
+# Create db directory and set permissions
+# RUN mkdir -p /var/www/html/db && chown -R www-data:www-data /var/www/html/db
 
 # Set COMPOSER_ALLOW_SUPERUSER
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Install dependencies
-RUN composer install --no-interaction --no-plugins --no-scripts
+# RUN composer install --no-interaction --no-plugins --no-scripts
+RUN composer install --no-interaction
 
-# Set permissions
+# Set permissions for the entire application
 RUN chown -R www-data:www-data /var/www/html
 
 # Expose port 80
