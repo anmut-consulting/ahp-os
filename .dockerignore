@@ -1,0 +1,10 @@
+# flyctl launch added from .gitignore
+**/.env
+**/vendor
+
+# flyctl launch added from vendor/darkterminal/turso-client-http/.gitignore
+vendor/darkterminal/turso-client-http/**/vendor
+vendor/darkterminal/turso-client-http/**/.vscode
+vendor/darkterminal/turso-client-http/**/taggen
+vendor/darkterminal/turso-client-http/**/.env
+fly.toml

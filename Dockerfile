@@ -1,6 +1,9 @@
 FROM php:7.4-apache
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    fuse3 \
+    sqlite3 \
     libsqlite3-dev \
     libzip-dev \
     libonig-dev \
@@ -10,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     && rm -rf /var/lib/apt/lists/*
+
+COPY --from=flyio/litefs:0.5 /usr/local/bin/litefs /usr/local/bin/litefs
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_sqlite zip mbstring xml curl
@@ -36,8 +41,9 @@ RUN composer install --no-interaction
 # Set permissions for the entire application
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port 80
-EXPOSE 80
+# Expose port 8081
+EXPOSE 8082
 
 # Start Apache server
+# CMD ["litefs mount"]
 CMD ["apache2-foreground"]
