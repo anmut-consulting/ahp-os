@@ -113,7 +113,12 @@
     );
 
     // define('DB_PATH', ABS_PATH . "/db/");
-    define('DB_PATH', __DIR__ . "/../db/");
+
+// ! IF running locally, use this line
+    // define('DB_PATH', __DIR__ . "/../db/");
+    
+// ! IF running on Fly.io, use this line
+    define('DB_PATH', "/var/lib/litefs/");
     
 
 

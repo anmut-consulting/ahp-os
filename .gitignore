@@ -1,2 +1,4 @@
 .env
 vendor/
+*.db
+db/ahp_os.db

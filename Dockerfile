@@ -41,9 +41,16 @@ RUN composer install --no-interaction
 # Set permissions for the entire application
 RUN chown -R www-data:www-data /var/www/html
 
+# Create a startup script
+RUN echo '#!/bin/bash\n\
+litefs mount &\n\
+apache2-foreground' > /usr/local/bin/start.sh && \
+    chmod +x /usr/local/bin/start.sh
+
 # Expose port 8081
 EXPOSE 8082
 
 # Start Apache server
 # CMD ["litefs mount"]
-CMD ["apache2-foreground"]
+# CMD ["apache2-foreground"]
+CMD ["/usr/local/bin/start.sh"]
