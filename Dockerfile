@@ -43,7 +43,6 @@ RUN chown -R www-data:www-data /var/www/html
 
 # Create a startup script
 RUN echo '#!/bin/bash\n\
-litefs mount &\n\
 apache2-foreground' > /usr/local/bin/start.sh && \
     chmod +x /usr/local/bin/start.sh
 

@@ -118,7 +118,7 @@
     // define('DB_PATH', __DIR__ . "/../db/");
     
 // ! IF running on Fly.io, use this line
-    define('DB_PATH', "/var/lib/litefs/");
+    define('DB_PATH', "/var/lib/database/");
     
 
 
@@ -131,12 +131,12 @@
         $dbName = DBNAME . '.db';
         $dbPath = DB_PATH;
         $dbFile = DB_PATH . $dbName;
-        if (!file_exists($dbFile)) {
-            die("Database file does not exist: $dbFile");
-        }
-        if (!is_readable($dbFile) || !is_writable($dbFile)) {
-            die("Database file is not readable or writable: $dbFile");
-        }
+        // if (!file_exists($dbFile)) {
+        //     die("Database file does not exist: $dbFile");
+        // }
+        // if (!is_readable($dbFile) || !is_writable($dbFile)) {
+        //     die("Database file is not readable or writable: $dbFile");
+        // }
     }
 
 /*
